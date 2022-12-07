@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ</title>
+
+    <link rel="stylesheet" href="lib/jquery-ui.css" media="screen">
+    <script type="text/javascript" src="lib/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+   
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.titre{
+text-align:center;
+}
+.demander{
+float:right;
+background:orange;
+}
+textarea{
+width: 100%;
+}
+</style>
+</head>
+<body>
+
+<h2 class="titre">FAQ</h2>
+
+<div class="container">
+  <img src="lib/images/icon.png" alt="Avatar" style="width:100%;">
+  <p>Bienvenue dans le FAQ.</p>
+  <p>Posez votre question s'il vous plait.</p>
+</div>
+<div id="tableau">
+
+</div>
+<div class="container send">
+  <form action="">
+
+        <div class="form-control">
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Entrez votre question s'il vous plait"
+            required
+          ></textarea>
+        </div>
+<button type="button" onClick="maj()" class="demander">Demander</button>
+<button class="button" onclick="window.location.href = '/';">Accueil</button>
+
+</form>
+</div>
+
+
+    <script>
+        //declaration du variable pour mettre a jour l'affichage
+  
+            let d=document.getElementById("tableau");
+       
+        	
+   
+//recupere la response au question depuis l'api
+        function maj(){
+            const request = new XMLHttpRequest();
+		//recuperer la question 
+    		let faq=document.getElementById("message").value;
+		d.innerHTML +="<div class='container darker'><img src='lib/images/icon2.png' alt='Avatar' class='right' style='width:100%;'><p>"+faq+"</p></div>";
+           document.getElementById("message").value=" ";
+		 const url = 'http://localhost:5000/faq/'+faq;
+            request.open("GET", url);
+            request.send();
+
+            request.onload = (e) => {
+                info=JSON.parse(request.response);
+     
+            
+		    let rep=(info.reponse);
+	
+		if (rep==null){
+				d.innerHTML+="<div class='container'><img src='lib/images/icon.png' alt='Avatar' style='width:100%;'><p>J'ai du mal à comprendre votre question.SVP veuillez reformuler votre question s'il vous plait.Elle doit etre en rapport avec la sexualité et la santé.</p></div>"
+				}else{
+					if(rep==="merci"){
+d.innerHTML+="<div class='container'><img src='lib/images/icon.png' alt='Avatar' style='width:100%;'><p>"+rep+"</p></div>"
+								}else{
+					let lien=(info.lien);
+d.innerHTML+="<div class='container'><img src='lib/images/icon.png' alt='Avatar' style='width:100%;'><p>"+rep+"<a href='"+lien+"'>detail</a></p></div>"
+						}//fin else
+					}
+    			
+          
+                                    }
+        }//maj
+    </script>
+</body>
+
+</html>

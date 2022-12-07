@@ -1,0 +1,31 @@
+### défi nuit de l'info 2022- les momies 1000 coeurs ###
+
+**prérequit**
+
+-avoir Node.JS
+
+**lancement du projet**
+1)installer les modules necéssaire
+	-commande dans un terminal: npm install
+2)lancer le projet avec la commande dans un terminal (là où se trouve le projet): nmp run dev
+
+**les composant de notre projet**
+1) notre projet contient une page d'accueil
+	- la mascotte indique 3 liens:
+		- le jeu qui est un visual novel. Il permet de comprendre quel son les risques lié aux mst, ist, sida... Le joueur peut faire différents choix et avoir différentes fin.
+		- un lien vers une faq. On pose une question liée aux problèmes sexuels et la petite mascotte répond.
+		-un lien vers le site de base   " https://www.sida-info-service.org/" 
+		-jeux caché en lien avec les IST avec un konamicode:
+			-> sur la page d'acceuil faire ses commandes  haut, haut, bas, bas, gauche, droite, gauche, droite, B, A
+			
+2) Le visual novel
+	-Permet de découvrir la plupart des IST sous forme de jeu. 
+	-On peut y découvrir des pratiques dangereuses comme le DDD qui a lieu au mois de décembre.
+
+3) La FAQ
+	-le document pdf explique comment faire fonctionner la FAQ
+	-la vidéo montre que la FAQ foncionne. Si on pose une quetion qui n'a rien à voir avec la sexualité, elle répond "je ne comprends pas" . Sinon, elle répond à la question.
+	-l'interface est presque sous forme de discussion instantanée. 
+	
+	
+###
